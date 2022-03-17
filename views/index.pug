@@ -1,0 +1,50 @@
+doctype html
+html
+	head
+		title pokemon
+		link(rel="stylesheet" href="/css/style.css")
+		link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+		crossorigin="anonymous" referrerpolicy="no-referrer")
+	body
+		header.navbar
+			.burger-menu
+				<i class="fas fa-bars"></i>
+				= "Menu"
+			ul.nav-links
+				li TACOS
+				li BEERS
+				li WINES
+				li DESSERTS
+				li RESERVATIONS
+		main.main-page
+			.hero
+				.left-hero
+					img(src="/images/pokemon-hero.jpg", alt="pokemon-hero" class="pokemon-hero")
+				.right-hero
+					.right-hero-top
+						= "Pokemons are great"
+					.right-hero-bottom
+						= "Have Fun"
+			.pokemon-preview-container
+				-for(let i=0;i<4;i++)
+					a(href=`/pokemon/${data[i].name}`)
+						.pokemon-container
+							img(src=`${data[i].icon}`, alt="pokemon-icon")
+							p= data[i].name
+			.charizard-preview
+				-var charizard = data.find(ele=>ele.name === "charizard")
+				img(src=`${charizard.image}`, alt="charizard" class="charizard-image")
+				.charizard-info
+					p= charizard.name.toUpperCase()
+					a(href=`/pokemon/${charizard.name}`)
+						button(class="go-to-charizard" type="button") More on charizard
+			.images-title
+				span.pictures-title Pokemons
+			.pokemon-images
+				each pokemon in data
+					.image-container
+						a(href=`/pokemon/${pokemon.name}`)
+						img(src=`${pokemon.image}`, alt="pokemon" class="pokemon-image")
+			.load-more-container
+				button(class="load-more" type="button") Load More
+		script(src="/js/script.js")

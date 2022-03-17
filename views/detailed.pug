@@ -1,0 +1,9 @@
+html
+  head
+    title pokemon-detailed
+    link(rel="stylesheet" href="/css/detailed.css")
+  body
+    .detailed-preview
+        img(src=`${data.sprites.other.home.front_default}`, alt="pokemon" class="detailed-image")
+        .detailed-pokemon-info
+          p= data.name.toUpperCase()
